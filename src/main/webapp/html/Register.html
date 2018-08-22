@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+</head>
+<body>
+<div align="center">
+    <form action="/test/register" method="post" onsubmit="return check()">
+        账  号：
+        <input type="text" name="username"  id="username" placeholder="请输入账号"/><br/><br/>
+        密  码：
+        <input type="password" id="password" placeholder="请输入密码"/><br/><br/>
+        <input type="hidden" name="password" id="md5_pwd">
+        号  码：
+        <input type="text" name="number" id="number" placeholder="请输入号码"/><br/><br/>
+        <!--<button type="submit" >注册</button>-->
+        <input type="submit" value="注册">
+        <input type="reset"/>
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+    function check() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var number = document.getElementById("number").value;
+        var md5_pwd = document.getElementById("md5_pwd");
+        if(username == "undefined" || username == ""){
+            window.alert("账号不可以为空！");
+            //document.getElementById("msg").innerHTML="账号不可以为空！";
+            return false;
+        }
+        if(password ==  "undefined" || password == ""){
+            window.alert("密码不可以为空！");
+            //document.getElementById("password").innerHTML="密码不可以为空！";
+            return false;
+        }
+        if(number ==  "undefined" || number == ""){
+            window.alert("号码不可以为空！");
+            //document.getElementById("number").innerHTML="号码不可以为空！";
+            return false;
+        }else {
+            md5_pwd.value=hex_md5(password);
+            return true;
+        }
+    }
+    </script>
+</html>

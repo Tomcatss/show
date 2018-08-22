@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <input type="button" onclick="ajax()"  value="天气预报"/>
+</div>
+<div id="weather"></div>
+</body>
+<script type="text/javascript">
+    function ajax(){
+        var  httpRequest = new XMLHttpRequest();
+        // httpRequest.open("GET","http://localhost:8080/servlet/json",true);//GET方式请求原始JSON数据
+        httpRequest.open("POST","http://localhost:8080/servlet/json",true);//POST方式请求原始JSON数据
+        httpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//POST方式请求JSON数据时需要加上这个请求头信息
+        httpRequest.onreadystatechange=function(){
+            if(httpRequest.readyState == 4 && httpRequest.status == 200){
+                var requestText = httpRequest.responseText;
+                document.getElementById('weather').innerHTML=requestText;
+                //console.log(httpRequest.getAllResponseHeaders());
+            }
+        }
+        httpRequest.send();
+    }
+</script>
+</html>

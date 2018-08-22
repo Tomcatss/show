@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<div align="center">
+    <form action="/test/enter" method="post">
+        账号：
+        <input type="text" name="username" /><br/><br/>
+        密  码：
+        <input type="password" id="password" /><br/><br/>
+        <input type="hidden" name="password" id="md5_pwd">
+
+        <button type="submit" onclick="getParameter()">登录</button>
+        <input  type="reset"/>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="/md5.js"></script>
+<script type="text/javascript">
+    function getParameter() {
+        var md5_pwd = document.getElementById("md5_pwd");
+        var pwd = document.getElementById("password").value;
+        md5_pwd.value=hex_md5(pwd);
+        console.log("password" + document.getElementById("password"));
+//      return true;
+    }
+</script>
+</html>
